@@ -9,13 +9,10 @@ function puhastaAndmed($data){
     return $data;
 }
 if(isset($_REQUEST["knimi"])&& isset($_REQUEST["psw"])) {
-
     $login = puhastaAndmed($_REQUEST["knimi"]);
     $pass = puhastaAndmed($_REQUEST["psw"]);
     $sool = 'vagavagatekst';
     $krypt = crypt($pass, $sool);
-
-//kasutajanimi kontroll
     $kask = $yhendus->prepare("SELECT id, unimi, psw FROM uuedkasutajad
 WHERE unimi=?");
     $kask->bind_param("s", $login);
